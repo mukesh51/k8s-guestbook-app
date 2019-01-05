@@ -7,11 +7,10 @@ metadata:
     tier: frontend
 
 spec:
-  type: NodePort
+  type: LoadBalancer
   ports:
     - port: 3000
       targetPort: 3000
-      nodePort: 30008
   selector:
     app: guestbook-pod
     tier: frontend
