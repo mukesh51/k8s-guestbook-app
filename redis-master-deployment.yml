@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: redis-master-deployment
+  labels:
+    name: redis-master-deployment
+    role: master
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: redis
+      tier: backend
+      role: master
+  template:
+    metadata:
+      name: redis-master
+      labels:
+        app: redis
+        tier: backend
+        role: master
+    spec:
+      containers:
+        - name: redis
+          image: redis
+          ports:
+            - containerPort: 6379
